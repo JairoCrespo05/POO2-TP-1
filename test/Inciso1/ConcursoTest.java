@@ -32,7 +32,7 @@ class ConcursoTest {
     public void testPrimerDia(){
         var particpante = new Participante("juan", "alvarez", 45);
 
-        var concurso = new Concurso("Gran Inciso1.Concurso", LocalDate.now(), LocalDate.parse("2025-03-16"));
+        var concurso = new Concurso("Gran Inciso1.Concurso", LocalDate.now(), LocalDate.parse("2025-04-28"));
 
 
 
@@ -40,7 +40,7 @@ class ConcursoTest {
 
         inscripcion.inscribirAlConcurso(concurso);
 
-        assertTrue(particpante.misPuntos() == 10);
+        assertEquals(10, particpante.misPuntos());
 
 
     }
