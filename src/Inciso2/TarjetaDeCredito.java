@@ -44,7 +44,7 @@ public abstract class TarjetaDeCredito {
 
 
     public void checknumTarjeta(long numTarjeta){
-           if(numTarjeta < 0){
+           if(numTarjeta < 1){
                  throw new RuntimeException(NUMERO_TARJETA_INVALIDO);
            }
     }

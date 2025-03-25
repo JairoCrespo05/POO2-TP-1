@@ -9,6 +9,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class MesaTest {
 
     @Test
+    void CostructorMesaTest(){
+
+        var exception = assertThrows(RuntimeException.class, () -> {
+            var mesa = new Mesa(0);
+        });
+
+        assertEquals(Mesa.CANT_SILLAS_INVALIDA, exception.getMessage());
+    }
+
+
+    @Test
     void TarjetaVisa() {
 
         var cliente = new Comensal("Julian", "Alvarez");
@@ -94,4 +105,30 @@ class MesaTest {
         assertEquals(9700, viedma.miSaldoEs());
 
     }
+
+    @Test
+    void SaldoInsuficiente() {
+
+        var cliente = new Comensal("Julian", "Alvarez");
+
+        var viedma = new TarjetSinDescuento(cliente, 231, LocalDate.parse("2025-04-16"));
+        var mesa = new Mesa(10);
+        var comida = new Alimento("Hamburguesa", 200);
+        var bebida = new Alimento("Pepsi", 10000);
+
+        cliente.asignarTarjeta(viedma);
+
+        mesa.aniadirBebidaAMenu(bebida);
+        mesa.aniadirComidaAMenu(comida);
+        mesa.sentarseEnLaMesa(cliente);
+
+
+
+        var exception = assertThrows(RuntimeException.class, ()->{
+            mesa.hacerPedido(cliente, comida, 1, bebida, 1);
+        });
+
+        assertEquals(TarjetaDeCredito.SALDO_INSUFICIENTE, exception.getMessage());
+    }
+
 }

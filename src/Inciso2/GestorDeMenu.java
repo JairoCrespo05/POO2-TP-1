@@ -21,7 +21,7 @@ public class GestorDeMenu {
 
     public void agregarComida(Alimento comida){ menuComida.add(comida);}
 
-    public float elegirDelMenuBebidas(/*String nombre*/Alimento bebida ,int cantidad){
+    public float elegirDelMenuBebidas(Alimento bebida ,int cantidad){
 
         for(Alimento bebidas : menuBebidas){
             if(bebidas.equals(bebida)){
@@ -31,7 +31,7 @@ public class GestorDeMenu {
         throw new RuntimeException(BEBIDA_NO_ENCONTRADA);
     }
 
-    public float elegirDelMenuComidas(/*String nombre*/ Alimento comida ,int cantidad){
+    public float elegirDelMenuComidas(Alimento comida ,int cantidad){
         for(Alimento comidas : menuComida){
             if(comidas.equals(comida)){
 
@@ -41,12 +41,6 @@ public class GestorDeMenu {
         }
         throw new RuntimeException(COMIDA_NO_ENCONTRADA);
     }
-
-//    public void mostrarPlatillos(){
-//        menuComida.stream().forEach( platillo ->  System.out.println(platillo) );
-//        menuBebidas.stream().forEach( bebida ->  System.out.println(bebida) );
-//    }
-
 
 
 }
